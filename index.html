@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jharkhand AI Tourism Platform - Discover Rich Heritage</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Authentication Pages -->
+    <!-- Landing Page -->
+    <section id="landing" class="landing-section">
+        <div class="tribal-pattern-bg"></div>
+        <div class="container">
+            <div class="landing-header">
+                <div class="brand">
+                    <h1><b>🌤️CLOUDSTEPS-Jharkhand</b></h1>
+                    <p class="brand-tagline">Your Window to Jharkhand’s Natural Treasures</p>
+                </div>
+                <div class="auth-buttons">
+                    <button class="btn btn--primary btn--lg" id="registerBtn">Register Now</button>
+                    <button class="btn btn--outline btn--lg" id="loginBtn">Login</button>
+                </div>
+            </div>
+            
+            <div class="hero-content">
+                <h2 class="hero-title">Travel Jharkhand: Authentic, Alive, and Unexplored</h2>
+                <p class="hero-subtitle">Experience personalized AI itineraries, authentic handicrafts, traditional cuisine, expert guides, thrilling adventures, and deep tribal community immersion across Jharkhand's 32+ tribal communities</p>
+                
+                <div class="preview-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">32+</span>
+                        <span class="stat-label">Tribal Communities</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2,847</span>
+                        <span class="stat-label">Live Visitors</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Authentic Products</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.8★</span>
+                        <span class="stat-label">Tourist Rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cultural-preview">
+                <h3>Revolutionary AI Tourism Features + Tribal Communities</h3>
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <div class="preview-icon">🤖</div>
+                        <h4>AI Trip Planning</h4>
+                        <p>Personalized itineraries including tribal experiences based on your preferences</p>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-icon">🏘️</div>
+                        <h4>32+ Tribal Communities</h4>
+                        <p>Comprehensive profiles and authentic experiences with all major tribes</p>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-icon">🎨</div>
+                        <h4>Authentic Handicrafts</h4>
+                        <p>Blockchain-verified tribal art directly from skilled artisans</p>
+                    </div>
+                    <div class="preview-card">
+                        <div class="preview-icon">🍽️</div>
+                        <h4>Traditional Cuisine</h4>
+                        <p>Discover famous Jharkhand food and tribal delicacies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Modal -->
+    <div class="modal hidden" id="registerModal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h3>Join Our AI-Powered Cultural Community</h3>
+                <button class="modal-close" id="closeRegister">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-section">
+                        <h4>User Type</h4>
+                        <div class="user-type-grid">
+                            <label class="user-type-card">
+                                <input type="radio" name="userType" value="tourist" checked>
+                                <div class="card-content">
+                                    <div class="card-icon">🧳</div>
+                                    <span>Tourist</span>
+                                </div>
+                            </label>
+                            <label class="user-type-card">
+                                <input type="radio" name="userType" value="guide">
+                                <div class="card-content">
+                                    <div class="card-icon">👨‍🏫</div>
+                                    <span>Cultural Guide</span>
+                                </div>
+                            </label>
+                            <label class="user-type-card">
+                                <input type="radio" name="userType" value="hotel">
+                                <div class="card-content">
+                                    <div class="card-icon">🏨</div>
+                                    <span>Hotel Owner</span>
+                                </div>
+                            </label>
+                            <label class="user-type-card">
+                                <input type="radio" name="userType" value="official">
+                                <div class="card-content">
+                                    <div class="card-icon">🏛️</div>
+                                    <span>Tourism Official</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="regName" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="regEmail" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="regPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-control" id="regAddress" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Cultural Interests (for AI personalization)</label>
+                        <div class="interests-grid">
+                            <label class="interest-tag"><input type="checkbox" value="art"> Traditional Art</label>
+                            <label class="interest-tag"><input type="checkbox" value="festivals"> Festivals</label>
+                            <label class="interest-tag"><input type="checkbox" value="adventure"> Adventure</label>
+                            <label class="interest-tag"><input type="checkbox" value="spiritual"> Spiritual</label>
+                            <label class="interest-tag"><input type="checkbox" value="wildlife"> Wildlife</label>
+                            <label class="interest-tag"><input type="checkbox" value="crafts"> Handicrafts</label>
+                            <label class="interest-tag"><input type="checkbox" value="tribal"> Tribal Communities</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="regPassword" required>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary btn--full-width btn--lg">Create AI-Enhanced Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal hidden" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Welcome Back</h3>
+                <button class="modal-close" id="closeLogin">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label">Email or Phone</label>
+                        <input type="text" class="form-control" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width btn--lg">Login to AI Platform</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" class="hidden">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <h2><b>🌤️CLOUDSTEPS-Jharkhand</b></h2>
+                    <span class="nav-subtitle">Your Window to Jharkhand’s Natural Treasures</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#dashboard" class="nav-link active">Dashboard</a></li>
+                    <li><a href="#ai-planner" class="nav-link">🤖 Plan My Trip</a></li>
+                    <li><a href="#tribal-communities" class="nav-link">🏘️ Tribal Communities</a></li>
+                    <li><a href="#transport" class="nav-link">Transport</a></li>
+                    <li><a href="#marketplace" class="nav-link">Handicrafts <span id="cartCount" class="cart-count hidden">0</span></a></li>
+                    <li><a href="#food" class="nav-link">Food & Cuisine</a></li>
+                    <li><a href="#guides" class="nav-link">Expert Guides</a></li>
+                    <li><a href="#adventures" class="nav-link">Adventures</a></li>
+                    <li><a href="#feedback" class="nav-link">Feedback</a></li>
+                    <li><a href="#analytics" class="nav-link" id="analyticsNav" style="display: none;">Analytics</a></li>
+                    <li class="nav-user" id="navUser">
+                        <span id="userName">User</span>
+                        <button class="btn btn--sm btn--outline" id="logoutBtn">Logout</button>
+                    </li>
+                </ul>
+                <div class="nav-toggle" id="navToggle">☰</div>
+            </div>
+        </nav>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section dashboard-hero">
+            <div class="container">
+                <div class="dashboard-welcome">
+                    <h1>Complete Jharkhand Tourism Experience</h1>
+                    <p class="dashboard-subtitle">AI Trip Planning, Tribal Communities, Transport, Handicrafts, Cuisine, Guides & Adventures - All in One Platform</p>
+                </div>
+
+                <!-- Live Stats -->
+                <div class="live-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">🤖</div>
+                        <div class="stat-info">
+                            <span class="stat-number">12+</span>
+                            <span class="stat-label">AI Trip Templates</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏘️</div>
+                        <div class="stat-info">
+                            <span class="stat-number">32+</span>
+                            <span class="stat-label">Tribal Communities</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🚌</div>
+                        <div class="stat-info">
+                            <span class="stat-number">150+</span>
+                            <span class="stat-label">Transport Routes</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎨</div>
+                        <div class="stat-info">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Authentic Crafts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <div class="action-card" onclick="scrollToSection('ai-planner')">
+                        <div class="action-icon">🤖</div>
+                        <h4>AI Trip Planner</h4>
+                        <p>Get personalized itineraries including tribal experiences</p>
+                    </div>
+                    <div class="action-card" onclick="scrollToSection('tribal-communities')">
+                        <div class="action-icon">🏘️</div>
+                        <h4>Tribal Communities</h4>
+                        <p>Explore 32+ tribes with authentic cultural experiences</p>
+                    </div>
+                    <div class="action-card" onclick="scrollToSection('transport')">
+                        <div class="action-icon">🚌</div>
+                        <h4>Smart Transport</h4>
+                        <p>Book rides between all Jharkhand destinations</p>
+                    </div>
+                    <div class="action-card" onclick="scrollToSection('marketplace')">
+                        <div class="action-icon">🎨</div>
+                        <h4>Authentic Handicrafts</h4>
+                        <p>Shop verified tribal art & crafts</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Trip Planner Section -->
+        <section id="ai-planner" class="section ai-planner-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🤖 AI-Powered Personalized Trip Planning</h2>
+                    <p>Let our intelligent system create the perfect Jharkhand experience with tribal community immersion tailored to your interests, budget, and cultural preferences</p>
+                </div>
+                
+                <div class="ai-planner-content">
+                    <!-- AI Questionnaire -->
+                    <div class="questionnaire-container" id="questionnaireContainer">
+                        <div class="questionnaire-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                            <span class="progress-text" id="progressText">Step 1 of 6</span>
+                        </div>
+                        
+                        <div class="questionnaire-step active" id="step1">
+                            <h3>How long would you like to explore Jharkhand?</h3>
+                            <div class="duration-grid">
+                                <div class="duration-card" data-duration="2">
+                                    <div class="duration-days">2 Days</div>
+                                    <div class="duration-subtitle">Weekend Getaway</div>
+                                    <div class="duration-description">Quick cultural taste or specific tribal activity</div>
+                                </div>
+                                <div class="duration-card" data-duration="3">
+                                    <div class="duration-days">3 Days</div>
+                                    <div class="duration-subtitle">Short Break</div>
+                                    <div class="duration-description">Single tribe exploration with 2-3 activities</div>
+                                </div>
+                                <div class="duration-card" data-duration="5">
+                                    <div class="duration-days">5 Days</div>
+                                    <div class="duration-subtitle">Cultural Immersion</div>
+                                    <div class="duration-description">Multiple tribal communities with hands-on experiences</div>
+                                </div>
+                                <div class="duration-card" data-duration="7">
+                                    <div class="duration-days">7 Days</div>
+                                    <div class="duration-subtitle">Complete Explorer</div>
+                                    <div class="duration-description">Comprehensive tribal tour covering culture, adventure, and nature</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="questionnaire-step" id="step2">
+                            <h3>What's your budget range per person?</h3>
+                            <div class="budget-grid">
+                                <div class="budget-card" data-budget="budget">
+                                    <div class="budget-range">₹5,000-10,000</div>
+                                    <div class="budget-type">Budget Traveler</div>
+                                    <div class="budget-description">Essential tribal experiences with local transport</div>
+                                </div>
+                                <div class="budget-card" data-budget="moderate">
+                                    <div class="budget-range">₹10,000-20,000</div>
+                                    <div class="budget-type">Moderate Comfort</div>
+                                    <div class="budget-description">Good balance of comfort and tribal authenticity</div>
+                                </div>
+                                <div class="budget-card" data-budget="premium">
+                                    <div class="budget-range">₹20,000-40,000</div>
+                                    <div class="budget-type">Premium Experience</div>
+                                    <div class="budget-description">Luxury accommodations with deep cultural immersion</div>
+                                </div>
+                                <div class="budget-card" data-budget="luxury">
+                                    <div class="budget-range">₹40,000+</div>
+                                    <div class="budget-type">Luxury Heritage</div>
+                                    <div class="budget-description">Exclusive tribal experiences with personal guides</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="questionnaire-step" id="step3">
+                            <h3>What interests you most about Jharkhand?</h3>
+                            <div class="interests-selection">
+                                <div class="interest-card" data-interest="cultural">
+                                    <div class="interest-icon">🎭</div>
+                                    <div class="interest-name">Cultural Immersion</div>
+                                    <div class="interest-desc">Deep dive into tribal traditions and heritage</div>
+                                </div>
+                                <div class="interest-card" data-interest="tribal">
+                                    <div class="interest-icon">🏘️</div>
+                                    <div class="interest-name">Tribal Communities</div>
+                                    <div class="interest-desc">Live with tribal families and learn traditional ways</div>
+                                </div>
+                                <div class="interest-card" data-interest="adventure">
+                                    <div class="interest-icon">🏔️</div>
+                                    <div class="interest-name">Adventure Activities</div>
+                                    <div class="interest-desc">Trekking, rappelling, wildlife safaris</div>
+                                </div>
+                                <div class="interest-card" data-interest="spiritual">
+                                    <div class="interest-icon">🕉️</div>
+                                    <div class="interest-name">Spiritual Journey</div>
+                                    <div class="interest-desc">Sacred groves, temples, meditation</div>
+                                </div>
+                                <div class="interest-card" data-interest="crafts">
+                                    <div class="interest-icon">🎨</div>
+                                    <div class="interest-name">Arts & Crafts</div>
+                                    <div class="interest-desc">Learn traditional art forms and techniques</div>
+                                </div>
+                                <div class="interest-card" data-interest="food">
+                                    <div class="interest-icon">🍽️</div>
+                                    <div class="interest-name">Culinary Exploration</div>
+                                    <div class="interest-desc">Traditional cuisine and cooking experiences</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="questionnaire-step" id="step4">
+                            <h3>What type of accommodation do you prefer?</h3>
+                            <div class="accommodation-grid">
+                                <div class="accommodation-card" data-accommodation="homestay">
+                                    <div class="accommodation-type">Tribal Homestays</div>
+                                    <div class="accommodation-price">₹800-1,500</div>
+                                    <div class="accommodation-experience">Authentic family living with tribal communities</div>
+                                </div>
+                                <div class="accommodation-card" data-accommodation="heritage">
+                                    <div class="accommodation-type">Heritage Resorts</div>
+                                    <div class="accommodation-price">₹2,500-5,000</div>
+                                    <div class="accommodation-experience">Luxury with cultural programs and tribal interactions</div>
+                                </div>
+                                <div class="accommodation-card" data-accommodation="camping">
+                                    <div class="accommodation-type">Cultural Camping</div>
+                                    <div class="accommodation-price">₹1,200-2,500</div>
+                                    <div class="accommodation-experience">Nature immersion with tribal guides and community</div>
+                                </div>
+                                <div class="accommodation-card" data-accommodation="luxury">
+                                    <div class="accommodation-type">Eco-Luxury Resorts</div>
+                                    <div class="accommodation-price">₹5,000-12,000</div>
+                                    <div class="accommodation-experience">Premium comfort with curated tribal experiences</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="questionnaire-step" id="step5">
+                            <h3>What's your group type and activity level?</h3>
+                            <div class="preferences-grid">
+                                <div class="preferences-section">
+                                    <h4>Group Type</h4>
+                                    <div class="group-options">
+                                        <label class="option-card"><input type="radio" name="groupType" value="solo"> Solo Traveler</label>
+                                        <label class="option-card"><input type="radio" name="groupType" value="couple"> Couple</label>
+                                        <label class="option-card"><input type="radio" name="groupType" value="family"> Family with Kids</label>
+                                        <label class="option-card"><input type="radio" name="groupType" value="friends"> Friends Group</label>
+                                    </div>
+                                </div>
+                                <div class="preferences-section">
+                                    <h4>Physical Activity Level</h4>
+                                    <div class="activity-options">
+                                        <label class="option-card"><input type="radio" name="activityLevel" value="low"> Low Intensity</label>
+                                        <label class="option-card"><input type="radio" name="activityLevel" value="moderate"> Moderate</label>
+                                        <label class="option-card"><input type="radio" name="activityLevel" value="high"> High Intensity</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="questionnaire-step" id="step6">
+                            <h3>Current Weather & Seasonal Preferences</h3>
+                            <div class="weather-section">
+                                <div class="current-weather">
+                                    <div class="weather-info">
+                                        <div class="weather-temp">26°C</div>
+                                        <div class="weather-condition">Partly Cloudy</div>
+                                        <div class="weather-humidity">Humidity: 78%</div>
+                                    </div>
+                                    <div class="weather-recommendation">
+                                        Perfect for tribal village visits and outdoor cultural activities
+                                    </div>
+                                </div>
+                                
+                                <div class="seasonal-preferences">
+                                    <h4>Any specific seasonal preferences?</h4>
+                                    <div class="season-options">
+                                        <label class="option-card"><input type="radio" name="season" value="any"> Any time is fine</label>
+                                        <label class="option-card"><input type="radio" name="season" value="festivals"> Include tribal festival seasons</label>
+                                        <label class="option-card"><input type="radio" name="season" value="weather"> Best weather only</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn--primary btn--lg btn--full-width" id="generateItinerary">
+                                🤖 Generate My AI Itinerary with Tribal Experiences
+                            </button>
+                        </div>
+
+                        <div class="questionnaire-navigation">
+                            <button class="btn btn--outline" id="prevStepBtn" style="display: none;">Previous</button>
+                            <button class="btn btn--primary" id="nextStepBtn">Next Step</button>
+                        </div>
+                    </div>
+
+                    <!-- AI Generated Itineraries -->
+                    <div class="itinerary-results hidden" id="itineraryResults">
+                        <div class="results-header">
+                            <h3>🤖 Your Personalized Jharkhand Itineraries</h3>
+                            <p>Our AI has analyzed your preferences and created these customized experiences with tribal community immersion</p>
+                        </div>
+                        
+                        <div class="itinerary-templates" id="itineraryTemplates">
+                            <!-- Generated itineraries will appear here -->
+                        </div>
+                    </div>
+
+                    <!-- Detailed Itinerary View -->
+                    <div class="itinerary-detail hidden" id="itineraryDetail">
+                        <!-- Detailed itinerary will be shown here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Tribal Communities Section -->
+        <section id="tribal-communities" class="section tribal-communities-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🏘️ Jharkhand's 32+ Tribal Communities</h2>
+                    <p>Discover authentic tribal heritage, participate in traditional activities, and experience respectful cultural immersion with Jharkhand's indigenous communities</p>
+                </div>
+
+                <!-- Tribal Overview Cards -->
+                <div class="tribal-overview">
+                    <div class="overview-stats">
+                        <div class="overview-card">
+                            <div class="overview-icon">🏘️</div>
+                            <h4>32+ Tribal Communities</h4>
+                            <p>From Santhal to Birhor, experience diverse cultures</p>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-icon">🎭</div>
+                            <h4>Authentic Experiences</h4>
+                            <p>Homestays, workshops, festivals, and ceremonies</p>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-icon">🗺️</div>
+                            <h4>Interactive Tribal Map</h4>
+                            <p>Explore territories and plan your cultural journey</p>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-icon">📅</div>
+                            <h4>Seasonal Activities</h4>
+                            <p>Festival calendar and traditional practices</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tribal Community Filters -->
+                <div class="tribal-filters">
+                    <div class="filter-section">
+                        <h4>Filter by Region</h4>
+                        <div class="region-filters">
+                            <button class="filter-btn active" data-region="all">All Regions</button>
+                            <button class="filter-btn" data-region="santhal-parganas">Santhal Parganas</button>
+                            <button class="filter-btn" data-region="ranchi-plateau">Ranchi Plateau</button>
+                            <button class="filter-btn" data-region="singhbhum">Singhbhum</button>
+                            <button class="filter-btn" data-region="hazaribagh">Hazaribagh Hills</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h4>Filter by Activity</h4>
+                        <div class="activity-filters">
+                            <button class="filter-btn active" data-activity="all">All Activities</button>
+                            <button class="filter-btn" data-activity="homestay">Homestays</button>
+                            <button class="filter-btn" data-activity="crafts">Traditional Crafts</button>
+                            <button class="filter-btn" data-activity="festivals">Festivals</button>
+                            <button class="filter-btn" data-activity="ceremonies">Sacred Ceremonies</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Tribal Map -->
+                <div class="tribal-map-container">
+                    <h3>Interactive Tribal Territory Map</h3>
+                    <div class="tribal-map" id="tribalMap">
+                        <div class="map-placeholder">
+                            <div class="map-icon">🗺️</div>
+                            <p>Click on regions to explore tribal communities</p>
+                            <div class="map-regions">
+                                <div class="map-region" data-region="santhal-parganas" onclick="showRegionTribes('santhal-parganas')">
+                                    <span>Santhal Parganas</span>
+                                    <small>Santhal Communities</small>
+                                </div>
+                                <div class="map-region" data-region="ranchi-plateau" onclick="showRegionTribes('ranchi-plateau')">
+                                    <span>Ranchi Plateau</span>
+                                    <small>Oraon & Munda</small>
+                                </div>
+                                <div class="map-region" data-region="singhbhum" onclick="showRegionTribes('singhbhum')">
+                                    <span>Singhbhum</span>
+                                    <small>Ho & Munda</small>
+                                </div>
+                                <div class="map-region" data-region="hazaribagh" onclick="showRegionTribes('hazaribagh')">
+                                    <span>Hazaribagh Hills</span>
+                                    <small>Mixed Communities</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tribal Communities Grid -->
+                <div class="tribal-communities-grid" id="tribalCommunitiesGrid">
+                    <!-- Community cards will be populated here -->
+                </div>
+
+                <!-- Seasonal Activity Calendar -->
+                <div class="seasonal-calendar">
+                    <h3>Tribal Festival & Activity Calendar</h3>
+                    <div class="calendar-seasons">
+                        <div class="season-card" data-season="spring">
+                            <div class="season-header">
+                                <h4>🌸 Spring (March-May)</h4>
+                                <p>Flowering season and sacred grove ceremonies</p>
+                            </div>
+                            <div class="season-activities">
+                                <div class="activity-item">
+                                    <strong>Sarhul Festival</strong> - Oraon spring celebration with flower offerings
+                                </div>
+                                <div class="activity-item">
+                                    <strong>Baha Festival</strong> - Santhal flower festival welcoming spring
+                                </div>
+                                <div class="activity-item">
+                                    <strong>Sacred Grove Ceremonies</strong> - Forest conservation rituals
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="season-card" data-season="monsoon">
+                            <div class="season-header">
+                                <h4>🌧️ Monsoon (June-September)</h4>
+                                <p>Agricultural activities and rain ceremonies</p>
+                            </div>
+                            <div class="season-activities">
+                                <div class="activity-item">
+                                    <strong>Karam Festival</strong> - Celebrating nature and agriculture
+                                </div>
+                                <div class="activity-item">
+                                    <strong>Traditional Farming</strong> - Participate in organic farming
+                                </div>
+                                <div class="activity-item">
+                                    <strong>Rugra Collection</strong> - Wild mushroom gathering experience
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="season-card" data-season="winter">
+                            <div class="season-header">
+                                <h4>❄️ Winter (October-February)</h4>
+                                <p>Harvest celebrations and craft workshops</p>
+                            </div>
+                            <div class="season-activities">
+                                <div class="activity-item">
+                                    <strong>Sohrai Festival</strong> - Harvest and cattle celebration
+                                </div>
+                                <div class="activity-item">
+                                    <strong>Mage Festival</strong> - Munda winter harvest celebration
+                                </div>
+                                <div class="activity-item">
+                                    <strong>Craft Workshops</strong> - Learn traditional arts in pleasant weather
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cultural Sensitivity Guidelines -->
+                <div class="cultural-guidelines">
+                    <h3>Respectful Tourism Guidelines</h3>
+                    <div class="guidelines-grid">
+                        <div class="guideline-card">
+                            <div class="guideline-icon">📸</div>
+                            <h4>Photography Ethics</h4>
+                            <ul>
+                                <li>Always ask permission before photographing people</li>
+                                <li>Respect sacred ceremonies and private moments</li>
+                                <li>Share photos with community when possible</li>
+                                <li>Avoid flash photography during rituals</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="guideline-card">
+                            <div class="guideline-icon">👗</div>
+                            <h4>Dress Code & Behavior</h4>
+                            <ul>
+                                <li>Wear modest, comfortable clothing</li>
+                                <li>Remove shoes when entering homes</li>
+                                <li>Show respect to elders and community leaders</li>
+                                <li>Participate humbly in cultural activities</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="guideline-card">
+                            <div class="guideline-icon">🎁</div>
+                            <h4>Gift Guidelines</h4>
+                            <ul>
+                                <li>Bring educational materials for children</li>
+                                <li>Support local artisans by purchasing crafts</li>
+                                <li>Contribute to community development funds</li>
+                                <li>Avoid giving money directly to individuals</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="guideline-card">
+                            <div class="guideline-icon">🗣️</div>
+                            <h4>Cultural Interaction</h4>
+                            <ul>
+                                <li>Learn basic greetings in local languages</li>
+                                <li>Listen more than you speak</li>
+                                <li>Ask questions respectfully and genuinely</li>
+                                <li>Share your own culture when appropriate</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multi-Tribal Experience Packages -->
+                <div class="tribal-experiences">
+                    <h3>Multi-Tribal Experience Packages</h3>
+                    <div class="experience-packages" id="tribalExperiencePackages">
+                        <!-- Experience packages will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transport Section -->
+        <section id="transport" class="section transport-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Complete Jharkhand Transport Network</h2>
+                    <p>Real-time booking for buses, taxis, auto-rickshaws between all major Jharkhand destinations including tribal villages</p>
+                </div>
+                
+                <div class="transport-content">
+                    <div class="transport-booking">
+                        <h3>Book Your Journey</h3>
+                        <div class="booking-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>From</label>
+                                    <select class="form-control" id="fromLocation">
+                                        <option>Ranchi</option>
+                                        <option>Jamshedpur</option>
+                                        <option>Dhanbad</option>
+                                        <option>Bokaro</option>
+                                        <option>Deoghar</option>
+                                        <option>Hazaribagh</option>
+                                        <option>Giridih</option>
+                                        <option>Daltonganj</option>
+                                        <option>Chaibasa</option>
+                                        <option>Dumka</option>
+                                        <option>Netarhat</option>
+                                        <option>McCluskieganj</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>To</label>
+                                    <select class="form-control" id="toLocation">
+                                        <option>Netarhat</option>
+                                        <option>Betla National Park</option>
+                                        <option>Hundru Falls</option>
+                                        <option>Dassam Falls</option>
+                                        <option>Jonha Falls</option>
+                                        <option>Deoghar (Baidyanath Temple)</option>
+                                        <option>Shikharji</option>
+                                        <option>Rajrappa Temple</option>
+                                        <option>Hazaribagh Wildlife Sanctuary</option>
+                                        <option>Dalma Wildlife Sanctuary</option>
+                                        <option>Massanjore</option>
+                                        <option>Panch Gagh Falls</option>
+                                        <option>Khunti (Tribal Villages)</option>
+                                        <option>Saraikela (Chhau Dance)</option>
+                                        <option>Amadubi (Dhokra Craft)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input type="date" class="form-control" id="travelDate" min="2025-09-19">
+                                </div>
+                                <div class="form-group">
+                                    <label>Passengers</label>
+                                    <select class="form-control" id="passengers">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="culturalGuide">
+                                    Add Tribal Cultural Guide (+₹500)
+                                </label>
+                            </div>
+                            <button class="btn btn--primary btn--lg btn--full-width" id="searchTransport">🔍 Search Transport Options</button>
+                        </div>
+                    </div>
+                    
+                    <div class="transport-options" id="transportOptions">
+                        <!-- Transport options will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Marketplace Section -->
+        <section id="marketplace" class="section marketplace-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Authentic Jharkhand Handicrafts</h2>
+                    <p>Shop blockchain-verified authentic tribal art directly from skilled artisans across all 32+ tribal communities</p>
+                </div>
+                
+                <div class="marketplace-header">
+                    <div class="cart-summary">
+                        <button class="btn btn--primary" id="viewCart">
+                            🛒 View Cart (<span id="cartItemCount">0</span>)
+                        </button>
+                        <span class="cart-total" id="cartTotal">₹0</span>
+                    </div>
+                </div>
+                
+                <div class="marketplace-content" id="marketplaceContent">
+                    <!-- Products will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Food & Cuisine Section -->
+        <section id="food" class="section food-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Famous Jharkhand Food & Cuisine</h2>
+                    <p>Discover traditional tribal delicacies and famous dishes from across all tribal communities</p>
+                </div>
+                
+                <div class="food-categories">
+                    <div class="category-filters">
+                        <button class="filter-btn active" data-category="all">All Items</button>
+                        <button class="filter-btn" data-category="Main Course">Main Course</button>
+                        <button class="filter-btn" data-category="Snack">Snacks</button>
+                        <button class="filter-btn" data-category="Tribal Special">Tribal Specials</button>
+                        <button class="filter-btn" data-category="Sweet">Sweets</button>
+                        <button class="filter-btn" data-category="Beverage">Beverages</button>
+                    </div>
+                    
+                    <div class="food-grid" id="foodGrid">
+                        <!-- Food items will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guides Section -->
+        <section id="guides" class="section guides-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Expert Cultural Guides & Specialists</h2>
+                    <p>Find certified guides for cultural experiences, tribal immersion, adventures, and authentic interactions</p>
+                </div>
+                
+                <div class="guides-filters">
+                    <div class="filter-tabs">
+                        <button class="filter-btn active" data-specialization="all">All Guides</button>
+                        <button class="filter-btn" data-specialization="Tribal Culture">Tribal Culture Experts</button>
+                        <button class="filter-btn" data-specialization="Adventure">Adventure Guides</button>
+                        <button class="filter-btn" data-specialization="Traditional Arts">Art Specialists</button>
+                        <button class="filter-btn" data-specialization="Wildlife">Wildlife Experts</button>
+                    </div>
+                </div>
+                
+                <div class="guides-grid" id="guidesGrid">
+                    <!-- Guides will be populated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Adventures Section -->
+        <section id="adventures" class="section adventures-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Adventures in Jharkhand</h2>
+                    <p>Thrilling outdoor activities and cultural adventures with original Jharkhand photography</p>
+                </div>
+                
+                <div class="adventure-categories">
+                    <div class="category-tabs">
+                        <button class="filter-btn active" data-adventure="all">All Adventures</button>
+                        <button class="filter-btn" data-adventure="Trekking">Trekking</button>
+                        <button class="filter-btn" data-adventure="Wildlife Adventure">Wildlife</button>
+                        <button class="filter-btn" data-adventure="Extreme Adventure">Extreme Sports</button>
+                        <button class="filter-btn" data-adventure="Spiritual Trekking">Spiritual</button>
+                    </div>
+                    
+                    <div class="adventures-grid" id="adventuresGrid">
+                        <!-- Adventures will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="photo-gallery">
+                    <h3>Original Jharkhand Photography</h3>
+                    <div class="photo-grid" id="photoGrid">
+                        <!-- Photo gallery will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section id="feedback" class="section feedback-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Share Your Experience - Comprehensive Feedback</h2>
+                    <p>Help us improve by sharing your detailed feedback about tribal experiences and cultural immersion</p>
+                </div>
+                
+                <div class="feedback-content">
+                    <div class="feedback-form-container">
+                        <form id="feedbackForm" class="comprehensive-feedback">
+                            <div class="feedback-step active" data-step="1">
+                                <h3>Overall Experience Rating</h3>
+                                <div class="rating-section">
+                                    <div class="star-rating" data-category="overall">
+                                        <span class="star" data-rating="1">★</span>
+                                        <span class="star" data-rating="2">★</span>
+                                        <span class="star" data-rating="3">★</span>
+                                        <span class="star" data-rating="4">★</span>
+                                        <span class="star" data-rating="5">★</span>
+                                    </div>
+                                    <span class="rating-text">Rate your overall experience</span>
+                                </div>
+                                <button type="button" class="btn btn--primary" onclick="nextFeedbackStep()">Next</button>
+                            </div>
+
+                            <div class="feedback-step" data-step="2">
+                                <h3>Experience Categories</h3>
+                                <div class="category-ratings">
+                                    <div class="rating-item">
+                                        <label>Accommodation</label>
+                                        <div class="star-rating" data-category="accommodation">
+                                            <span class="star" data-rating="1">★</span>
+                                            <span class="star" data-rating="2">★</span>
+                                            <span class="star" data-rating="3">★</span>
+                                            <span class="star" data-rating="4">★</span>
+                                            <span class="star" data-rating="5">★</span>
+                                        </div>
+                                    </div>
+                                    <div class="rating-item">
+                                        <label>Tribal Community Experience</label>
+                                        <div class="star-rating" data-category="tribal">
+                                            <span class="star" data-rating="1">★</span>
+                                            <span class="star" data-rating="2">★</span>
+                                            <span class="star" data-rating="3">★</span>
+                                            <span class="star" data-rating="4">★</span>
+                                            <span class="star" data-rating="5">★</span>
+                                        </div>
+                                    </div>
+                                    <div class="rating-item">
+                                        <label>Food Quality</label>
+                                        <div class="star-rating" data-category="food">
+                                            <span class="star" data-rating="1">★</span>
+                                            <span class="star" data-rating="2">★</span>
+                                            <span class="star" data-rating="3">★</span>
+                                            <span class="star" data-rating="4">★</span>
+                                            <span class="star" data-rating="5">★</span>
+                                        </div>
+                                    </div>
+                                    <div class="rating-item">
+                                        <label>Transport Services</label>
+                                        <div class="star-rating" data-category="transport">
+                                            <span class="star" data-rating="1">★</span>
+                                            <span class="star" data-rating="2">★</span>
+                                            <span class="star" data-rating="3">★</span>
+                                            <span class="star" data-rating="4">★</span>
+                                            <span class="star" data-rating="5">★</span>
+                                        </div>
+                                    </div>
+                                    <div class="rating-item">
+                                        <label>Guide Services</label>
+                                        <div class="star-rating" data-category="guides">
+                                            <span class="star" data-rating="1">★</span>
+                                            <span class="star" data-rating="2">★</span>
+                                            <span class="star" data-rating="3">★</span>
+                                            <span class="star" data-rating="4">★</span>
+                                            <span class="star" data-rating="5">★</span>
+                                        </div>
+                                    </div>
+                                    <div class="rating-item">
+                                        <label>Cultural Activities</label>
+                                        <div class="star-rating" data-category="cultural">
+                                            <span class="star" data-rating="1">★</span>
+                                            <span class="star" data-rating="2">★</span>
+                                            <span class="star" data-rating="3">★</span>
+                                            <span class="star" data-rating="4">★</span>
+                                            <span class="star" data-rating="5">★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-navigation">
+                                    <button type="button" class="btn btn--outline" onclick="prevFeedbackStep()">Previous</button>
+                                    <button type="button" class="btn btn--primary" onclick="nextFeedbackStep()">Next</button>
+                                </div>
+                            </div>
+
+                            <div class="feedback-step" data-step="3">
+                                <h3>Detailed Feedback</h3>
+                                <div class="form-group">
+                                    <label class="form-label">What did you like most about your tribal community experience?</label>
+                                    <textarea class="form-control" id="likedMost" rows="3" placeholder="Share what made your cultural experience special..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">What could be improved?</label>
+                                    <textarea class="form-control" id="improvements" rows="3" placeholder="Suggestions for improvement..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Cultural Sensitivity Rating</label>
+                                    <div class="star-rating" data-category="sensitivity">
+                                        <span class="star" data-rating="1">★</span>
+                                        <span class="star" data-rating="2">★</span>
+                                        <span class="star" data-rating="3">★</span>
+                                        <span class="star" data-rating="4">★</span>
+                                        <span class="star" data-rating="5">★</span>
+                                    </div>
+                                    <span class="rating-help">How respectful was the tribal cultural presentation?</span>
+                                </div>
+                                <div class="form-navigation">
+                                    <button type="button" class="btn btn--outline" onclick="prevFeedbackStep()">Previous</button>
+                                    <button type="button" class="btn btn--primary" onclick="nextFeedbackStep()">Next</button>
+                                </div>
+                            </div>
+
+                            <div class="feedback-step" data-step="4">
+                                <h3>Photo Upload & Recommendation</h3>
+                                <div class="form-group">
+                                    <label class="form-label">Upload Photos from Your Tribal Experience</label>
+                                    <div class="photo-upload-area" id="photoUpload">
+                                        <div class="upload-placeholder">
+                                            <div class="upload-icon">📸</div>
+                                            <p>Click to upload or drag photos here</p>
+                                            <span class="upload-note">Share your memorable tribal community moments</span>
+                                        </div>
+                                        <input type="file" id="photoFiles" multiple accept="image/*" style="display: none;">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Would you recommend Jharkhand tribal tourism to others?</label>
+                                    <div class="recommendation-scale">
+                                        <div class="scale-labels">
+                                            <span>Not Likely</span>
+                                            <span>Very Likely</span>
+                                        </div>
+                                        <div class="scale-numbers" id="recommendationScale">
+                                            <button type="button" data-score="1">1</button>
+                                            <button type="button" data-score="2">2</button>
+                                            <button type="button" data-score="3">3</button>
+                                            <button type="button" data-score="4">4</button>
+                                            <button type="button" data-score="5">5</button>
+                                            <button type="button" data-score="6">6</button>
+                                            <button type="button" data-score="7">7</button>
+                                            <button type="button" data-score="8">8</button>
+                                            <button type="button" data-score="9">9</button>
+                                            <button type="button" data-score="10">10</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-navigation">
+                                    <button type="button" class="btn btn--outline" onclick="prevFeedbackStep()">Previous</button>
+                                    <button type="submit" class="btn btn--primary btn--lg">Submit Comprehensive Feedback</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tourism Analytics Dashboard (Officials Only) -->
+        <section id="analytics" class="section analytics-section" style="display: none;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Tourism Analytics Dashboard</h2>
+                    <p>Real-time visitor statistics and performance metrics including tribal community engagement</p>
+                </div>
+                
+                <div class="analytics-content">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <h4>Live Visitor Count</h4>
+                            <div class="metric-chart">
+                                <canvas id="visitorChart" style="position: relative; height: 200px;"></canvas>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <h4>Revenue Analytics</h4>
+                            <div class="metric-chart">
+                                <canvas id="revenueChart" style="position: relative; height: 200px;"></canvas>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <h4>Satisfaction Scores</h4>
+                            <div class="sentiment-analysis" id="sentimentAnalysis">
+                                <!-- Sentiment data will be populated here -->
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <h4>Popular Destinations</h4>
+                            <div class="destination-stats" id="destinationStats">
+                                <!-- Destination statistics will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div class="modal hidden" id="cartModal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h3>🛒 Shopping Cart</h3>
+                <button class="modal-close" id="closeCart">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="cartContent">
+                    <!-- Cart items will be populated here -->
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total-display">
+                        <strong>Total: <span id="modalCartTotal">₹0</span></strong>
+                    </div>
+                    <button class="btn btn--primary btn--lg btn--full-width" id="proceedCheckout">
+                        🔐 Secure Blockchain Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal hidden" id="bookingModal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h3 id="bookingTitle">Book Experience</h3>
+                <button class="modal-close" id="closeBooking">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="bookingContent">
+                    <!-- Booking form will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced AI Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <span>🤖 Cultural AI Assistant</span>
+            <div class="chat-status">
+                <span class="status-dot online"></span>
+                <span>Online</span>
+            </div>
+            <button id="closeChatBtn">×</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                Namaste! I can help you with AI trip planning, tribal community experiences, transport booking, authentic handicrafts, traditional food recommendations, guide selection, and adventure planning. What would you like to explore in Jharkhand's tribal heritage today?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Ask about AI planning, tribal communities, transport, food, guides..." />
+            <button id="sendChatBtn">Send</button>
+        </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle">🤖</button>
+
+    <script src="app.js"></script>
+</body>
+</html>
